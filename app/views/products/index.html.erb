@@ -18,10 +18,19 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
-        <!--<td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-        <td><a href="/cart/<%= product.id%>">Add to cart</a></td>
+
+    <!-- if the current user is shopkeeper he/she can edit product
+       and customer can not modify products -->
+    <% if current_user %>
+      <% if current_user.email == "admin@admin.com" %> 
+          <td><%= link_to 'Show', product %></td>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <% else %>
+          <td><a href="/cart/<%= product.id%>">Add to cart</a></td>
+        <%end%>
+      <%end%> 
+         
       </tr>
     <% end %>
   </tbody>
