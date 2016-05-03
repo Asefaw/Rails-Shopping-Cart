@@ -11,9 +11,15 @@ at this point a customer can add items into a shopping cart
 
 Shopkeeper can modify product but this is not accesible to customers
 
+the shopkeeper account is
+Email: admin@admin.com
+Pass:  admin123
+
 the app is on Heroku below is the link
 
-https://pacific-beyond-37232.herokuapp.com
+https://shoppingcart-asefaw.herokuapp.com
+
+
 
 
  
