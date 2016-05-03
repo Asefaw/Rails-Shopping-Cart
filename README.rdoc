@@ -9,6 +9,8 @@ and used "DEVISE" gem for user authentication
 
 at this point a customer can add items into a shopping cart
 
+Shopkeeper can modify product but this is not accesible to customers
+
 the app is on Heroku below is the link
 
 https://pacific-beyond-37232.herokuapp.com
