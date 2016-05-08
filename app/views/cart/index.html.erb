@@ -1,9 +1,11 @@
-<h1>Item in Your Cart</h1>  
+<h1>Items in Your Cart</h1>  
 
 <% if @cart.empty? %>
-  <p> Your Cart is Currently Empty</p>
+  <p> Your Cart is Currently Empty </p>
+  <p><b><%= link_to "Shop for Items", products_path %> <b> </p>
 <%  else %>
-  <%= link_to 'Clear Cart', cart_clear_path %><br><br> 
+  <%= link_to 'Clear Cart', cart_clear_path %> &nbsp;&nbsp;
+  <%= link_to 'ADD More Products', products_path %><br><br> 
 <% end %>
 
 <% total = 0 %>

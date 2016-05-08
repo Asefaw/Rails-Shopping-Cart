@@ -32,7 +32,7 @@
 <div id="admin_menu">
 	<% if current_user %>
 		<% if current_user.email == "admin@admin.com" %>
-		 	<h3 align="center">Shopkeeper Dashboard</h3> <br>
+		 	<u><h3 align="center">Shopkeeper Dashboard</h3></u> <br>
 		 	<%= link_to "Add or Update Product", products_path %> &nbsp;&nbsp;&nbsp;&nbsp;
 		 	<%= link_to "View Recent Orders", orders_path %>
 		 <%end%>
@@ -43,5 +43,13 @@
 	<p class="alert"><%= alert %></p>
 <%= yield %>
 
+<div id="footer"> 
+	 
+	<%= link_to "Home",root_path %> &nbsp;&nbsp;
+	<%= link_to "About",page_about_path %> &nbsp;&nbsp;
+	<%= link_to "Contact",page_contact_path %> &nbsp;&nbsp; 
+
+	<p>Copyright &copy; Asefaw Mekuria</p><hr>
+</div>
 </body>
 </html>

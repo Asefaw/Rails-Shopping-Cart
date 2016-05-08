@@ -23,19 +23,25 @@
        and customer can not modify products -->
     <% if current_user %>
       <% if current_user.email == "admin@admin.com" %> 
-          <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+          <td><%= link_to 'Show', product %>&nbsp;</td> 
+          <td><%= link_to 'Edit', edit_product_path(product) %>&nbsp;</td> 
+          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?'}%> &nbsp;<br></td>  
+           
+           
+
         <% else %>
-          <td><a href="/cart/<%= product.id%>">Add to cart</a></td>
+           
         <%end%>
       <%end%> 
-         
+      <td><a href="/cart/<%= product.id%>">Add to cart</a></td>   
       </tr>
-    <% end %>
+    <% end %> 
   </tbody>
 </table>
-
+<br><br>
+    <% if current_user.email == "admin@admin.com" %> 
+        <td><%= link_to 'New Product', new_product_path %> &nbsp;</td>
+    <%end%>
 <br>
 
-<%= link_to 'New Product', new_product_path %> 
+ 

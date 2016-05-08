@@ -15,11 +15,18 @@
  */
 #menu_nav{
 	padding: 0 15px 0 15px;
+	height: 30px;
+	font-size: 14pt;
 }
 #user_session{
 	float: right;
 }
 #admin_menu{
 	padding: 0 15px 0 15px;
+	font-weight: bold;
 
+}
+#footer{
+	padding: 0 30px 0 30px;
+	margin-top: 500px;
 }
