@@ -39,8 +39,10 @@
   </tbody>
 </table>
 <br><br>
-    <% if current_user.email == "admin@admin.com" %> 
-        <td><%= link_to 'New Product', new_product_path %> &nbsp;</td>
+    <% if current_user %>
+        <% if current_user.email == "admin@admin.com" %> 
+            <td><%= link_to 'Add New Product', new_product_path %> &nbsp;</td>
+        <%end%>
     <%end%>
 <br>
 
