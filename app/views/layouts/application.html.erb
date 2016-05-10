@@ -14,12 +14,19 @@
 		<%= link_to "Shop",products_path %> &nbsp;&nbsp;
 		<%= link_to "About",page_about_path %> &nbsp;&nbsp;
 		<%= link_to "Contact",page_contact_path %> &nbsp;&nbsp;
-		<%= link_to "View Cart",cart_path %>
+		<%if current_user %>
+			<%= link_to "View Cart",cart_path %>
+		<%end%>	
+      <!-- show orders that belongs to current user-->
+		<% if user_signed_in? %>&nbsp;&nbsp;  
+			<%= link_to "My Orders",orders_path%>
+	    <%end%>
      
    <span id="user_session"> 
 	<% if user_signed_in? %> 
 		<%= current_user.email %>
-		<%= link_to "Sign Out",users_sign_out_path, method: :delete %>
+		<%= link_to "Sign Out",users_sign_out_path, method: :delete 
+	%>
 	<% else %>
 		<%= link_to "Sign In",new_user_session_path %> &nbsp;&nbsp;
 		<%= link_to "Sign Up",new_user_registration_path %>&nbsp;&nbsp;
@@ -30,6 +37,7 @@
 	</div>
 </nav><hr>
 <div id="admin_menu">
+	<!-- only if the current user has admin proivilage, then he/she can modify products -->
 	<% if current_user %>
 		<% if current_user.email == "admin@admin.com" %>
 		 	<u><h3 align="center">Shopkeeper Dashboard</h3></u> <br>

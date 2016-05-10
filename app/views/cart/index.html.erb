@@ -21,12 +21,8 @@
   <p> <%= number_to_currency(product.price ) %></p>
 
   </li>
-  <% total += qty * product.price %>
-
-
-
-<% end %>
- 
+  <% total += qty * product.price %> 
+<% end %> 
  </ul>
  <p><b> TOTAL: <%= number_to_currency(total)%> <b></p>
   <% if @cart.empty? %> 

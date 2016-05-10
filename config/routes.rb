@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :customers
   get 'cart/index'
 
   resources :orders
   resources :shopkeepers
-  resources :customers
   devise_for :users
   get '/cart' => 'cart#index'
   get '/cart/clear' => 'cart#clearCart'

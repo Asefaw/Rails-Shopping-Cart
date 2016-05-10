@@ -43,7 +43,7 @@ class CartController < ApplicationController
   #placing an order
   # i'm tryng to palce the order by calling the placeOrder method in the Order Model
   # but i'm problem getting the the values from the cart view 
-  order = Order.new
+  #order = Order.new
   #order.palceOrder(cust_id, product_id, order_date, total)
   
   

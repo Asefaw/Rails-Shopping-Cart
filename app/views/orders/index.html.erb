@@ -2,6 +2,7 @@
 
 <h1>Listing Orders</h1>
 
+<!--
 <table>
   <thead>
     <tr>
@@ -26,8 +27,23 @@
       </tr>
     <% end %>
   </tbody>
+</table> -->
+<table>
+  <thead>
+    <tr>
+      <th> Order ID</th>
+    </tr>    
+  </thead>
+  <tbody>     
+    <% @orders.each do | id | %>
+    <% order = Order.find_by_customer_id(1) %>
+    <tr>
+      <td><%= link_to order.id, order %> </td>
+      <%end%>
+    </tr>     
+  </tbody>
 </table>
-
+ 
 <br>
 
 <%= link_to 'New Order', new_order_path %>

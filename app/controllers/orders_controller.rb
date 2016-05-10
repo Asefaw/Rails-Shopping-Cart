@@ -1,9 +1,17 @@
 class OrdersController < ApplicationController
+  # authenticate users before showing any order
+  before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+
 
   # GET /orders
   # GET /orders.json
   def index
+    if session[:orders] then
+      @orders = session[:orders]
+    else
+      @orders = {}
+    end
     @orders = Order.all
   end
 
