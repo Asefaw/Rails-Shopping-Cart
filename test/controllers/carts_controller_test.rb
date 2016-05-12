@@ -18,7 +18,7 @@ class CartsControllerTest < ActionController::TestCase
 
   test "should create cart" do
     assert_difference('Cart.count') do
-      post :create, cart: { shopper_id: @cart.shopper_id }
+      post :create, cart: { user_id: @cart.user_id }
     end
 
     assert_redirected_to cart_path(assigns(:cart))
@@ -35,7 +35,7 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should update cart" do
-    patch :update, id: @cart, cart: { shopper_id: @cart.shopper_id }
+    patch :update, id: @cart, cart: { user_id: @cart.user_id }
     assert_redirected_to cart_path(assigns(:cart))
   end
 
