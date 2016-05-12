@@ -1,6 +1,5 @@
 class Cart < ActiveRecord::Base
-  belongs_to :customer
-  has_many :product_cart
-  has_many :product, through: :product_cart
-  
+  belongs_to :shopper
+  has_many :item_carts
+  has_many :items, through: :item_carts
 end

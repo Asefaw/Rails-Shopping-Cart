@@ -1,23 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Product:</strong>
-  <%= @order.product %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @order.customer %>
-</p>
-
-<p>
   <strong>Orderdate:</strong>
-  <%= @order.orderDate %>
+  <%= @order.orderdate %>
 </p>
 
 <p>
-  <strong>Totalcharge:</strong>
-  <%= @order.totalCharge %>
+  <strong>Shopper:</strong>
+  <%= @order.shopper %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

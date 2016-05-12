@@ -1,17 +1,9 @@
 class OrdersController < ApplicationController
-  # authenticate users before showing any order
-  before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
 
   # GET /orders
   # GET /orders.json
   def index
-    if session[:orders] then
-      @orders = session[:orders]
-    else
-      @orders = {}
-    end
     @orders = Order.all
   end
 
@@ -77,6 +69,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:product_id, :customer_id, :orderDate, :totalCharge)
+      params.require(:order).permit(:orderdate, :shopper_id)
     end
 end

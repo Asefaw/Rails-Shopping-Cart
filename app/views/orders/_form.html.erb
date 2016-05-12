@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
+    <%= f.label :orderdate %><br>
+    <%= f.date_select :orderdate %>
   </div>
   <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :orderDate %><br>
-    <%= f.date_select :orderDate %>
-  </div>
-  <div class="field">
-    <%= f.label :totalCharge %><br>
-    <%= f.number_field :totalCharge %>
+    <%= f.label :shopper_id %><br>
+    <%= f.text_field :shopper_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
