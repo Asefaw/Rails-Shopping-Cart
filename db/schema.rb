@@ -11,66 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510020758) do
+ActiveRecord::Schema.define(version: 20160512060351) do
 
   create_table "carts", force: :cascade do |t|
-    t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "carts", ["customer_id"], name: "index_carts_on_customer_id"
-
-  create_table "customers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
+    t.integer  "shopper_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "customer_id"
-    t.date     "orderDate"
-    t.integer  "totalCharge"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+  add_index "carts", ["shopper_id"], name: "index_carts_on_shopper_id"
 
-  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
-  add_index "orders", ["product_id"], name: "index_orders_on_product_id"
-
-  create_table "product_carts", force: :cascade do |t|
-    t.integer  "product_id"
+  create_table "item_carts", force: :cascade do |t|
+    t.integer  "item_id"
     t.integer  "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "product_carts", ["cart_id"], name: "index_product_carts_on_cart_id"
-  add_index "product_carts", ["product_id"], name: "index_product_carts_on_product_id"
+  add_index "item_carts", ["cart_id"], name: "index_item_carts_on_cart_id"
+  add_index "item_carts", ["item_id"], name: "index_item_carts_on_item_id"
 
-  create_table "product_orders", force: :cascade do |t|
-    t.integer  "product_id"
+  create_table "item_orders", force: :cascade do |t|
+    t.integer  "item_id"
     t.integer  "order_id"
+    t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "product_orders", ["order_id"], name: "index_product_orders_on_order_id"
-  add_index "product_orders", ["product_id"], name: "index_product_orders_on_product_id"
+  add_index "item_orders", ["item_id"], name: "index_item_orders_on_item_id"
+  add_index "item_orders", ["order_id"], name: "index_item_orders_on_order_id"
 
-  create_table "products", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
+    t.integer  "quantity"
     t.integer  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "shopkeepers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
+  create_table "orders", force: :cascade do |t|
+    t.date     "orderdate"
+    t.integer  "shopper_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "orders", ["shopper_id"], name: "index_orders_on_shopper_id"
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

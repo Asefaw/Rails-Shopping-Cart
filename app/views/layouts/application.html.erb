@@ -10,12 +10,10 @@
 	 
 <nav id="navigation">
 	<div id="menu_nav"> 
-		<%= link_to "Home",root_path %> &nbsp;&nbsp;
-		<%= link_to "Shop",products_path %> &nbsp;&nbsp;
-		<%= link_to "About",page_about_path %> &nbsp;&nbsp;
-		<%= link_to "Contact",page_contact_path %> &nbsp;&nbsp;
+		<%= link_to "Home",items_path %> &nbsp;&nbsp;
+		<%= link_to "Shop",items_path %> &nbsp;&nbsp; 
 		<%if current_user %>
-			<%= link_to "View Cart",cart_path %>
+			<%= link_to "View Cart",carts_path %>
 		<%end%>	
       <!-- show orders that belongs to current user-->
 		<% if user_signed_in? %>&nbsp;&nbsp;  
@@ -41,7 +39,7 @@
 	<% if current_user %>
 		<% if current_user.email == "admin@admin.com" %>
 		 	<u><h3 align="center">Shopkeeper Dashboard</h3></u> <br>
-		 	<%= link_to "Add or Update Product", products_path %> &nbsp;&nbsp;&nbsp;&nbsp;
+		 	<%= link_to "Add or Update Product", items_path %> &nbsp;&nbsp;&nbsp;&nbsp;
 		 	<%= link_to "View Recent Orders", orders_path %>
 		 <%end%>
 	<%end%>
@@ -53,9 +51,7 @@
 
 <div id="footer"> 
 	 
-	<%= link_to "Home",root_path %> &nbsp;&nbsp;
-	<%= link_to "About",page_about_path %> &nbsp;&nbsp;
-	<%= link_to "Contact",page_contact_path %> &nbsp;&nbsp; 
+	<%= link_to "Home",items_path %> &nbsp;&nbsp; 
 
 	<p>Copyright &copy; Asefaw Mekuria</p><hr>
 </div>

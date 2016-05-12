@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /carts
   # GET /carts.json
   def index
@@ -14,7 +14,7 @@ class CartsController < ApplicationController
 
   # GET /carts/new
   def new
-    @cart = Cart.new
+    @cart = current_user.cart.build
   end
 
   # GET /carts/1/edit
@@ -24,7 +24,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    @cart = current_user.cart.build(cart_params)
 
     respond_to do |format|
       if @cart.save

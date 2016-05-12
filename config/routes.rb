@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  #get 'users/index'
+
+  resources :pages
+  resources :shoppers
   resources :items
   resources :orders
   resources :carts
-  resources :shoppers
   resources :customers
   get 'cart/index'
 
@@ -10,17 +13,12 @@ Rails.application.routes.draw do
   resources :shopkeepers
   devise_for :users
   get '/cart' => 'cart#index'
-  get '/cart/clear' => 'cart#clearCart'
-  get '/cart/:id' => 'cart#addItem'
-  get '/cart/checkout' => 'cart#clearCart'
- 
+  #get '/cart/clear' => 'cart#clearCart'
+  #get '/cart/:id' => 'cart#addItem'
+  #get '/cart/checkout' => 'cart#clearCart'
+  
+  get '/users' => 'users#index'
 
-  resources :products
-  get 'page/home'
-
-  get 'page/about'
-
-  get 'page/contact'
 
 
 
@@ -28,7 +26,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'page#home'
+  root :to => 'pages#index'
 
   devise_scope :user do
    delete "/users/sign_out" => "devise/sessions#destroy"

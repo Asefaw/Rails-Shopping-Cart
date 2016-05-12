@@ -18,14 +18,23 @@
         <td><%= item.name %></td>
         <td><%= item.quantity %></td>
         <td><%= item.price %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if current_user %>
+          <%if current_user.email == "admin@admin.com"%> 
+            <td><%= link_to 'Show', item %></td>
+            <td><%= link_to 'Edit', edit_item_path(item) %></td>
+            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%else%>
+            <td><%= link_to 'Show', item %></td>
+          <%end%>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Item', new_item_path %>
+<%if current_user %>
+  <%if current_user.email == "admin@admin.com"%> 
+    <%= link_to 'New Item', new_item_path %>
+  <%end%>
+<%end%>
