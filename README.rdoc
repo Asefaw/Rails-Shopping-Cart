@@ -1,15 +1,11 @@
 == README
 
-Project 2 Shopping Cart
+Project 2 Shopping Cart Phase 2
 
-i generated the Model and Controllers needed for this phase
-and created Gloabl layout for all pages
-
-and used "DEVISE" gem for user authentication
-
-at this point a customer can add items into a shopping cart
-
-Shopkeeper can modify product but this is not accesible to customers
+Shopkeeper can view, add, and edit Items but other users cannot
+Shopkeeper can see other peoples orders
+users can only see their own order. to check this sign up and make an order, the view your order, 
+then sign in as admin using the credential below and see the difference
 
 the shopkeeper account is
 Email: admin@admin.com
@@ -17,7 +13,8 @@ Pass:  admin123
 
 the app is on Heroku below is the link
 
-https://shoppingcart-asefaw.herokuapp.com
+http://shopping-cart-asefaw.herokuapp.com/
+
 
 
 
