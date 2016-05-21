@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
-  resources :carts
+ 
   #get 'users/index'
 
-  resources :pages
-  resources :shoppers
+  resources :pages 
   resources :items
   resources :orders
-  resources :carts
-  resources :customers
+  resources :carts 
   get 'cart/index'
 
-  resources :orders
-  resources :shopkeepers
+  resources :orders 
   devise_for :users
   get '/cart' => 'cart#index'
-  #get '/cart/clear' => 'cart#clearCart'
-  #get '/cart/:id' => 'cart#addItem'
-  #get '/cart/checkout' => 'cart#clearCart'
-  
+  get '/cart/clear' => 'carts#emptyCart'
+  get '/cart/:id' => 'carts#add' 
+  get '/order/new' => 'orders#new'
+  get '/cart/checkout' => 'carts#checkout'
   get '/users' => 'users#index'
+  get '/cart/remove' => 'carts#remove'
+  get '/item/update' => 'items#updateitem'
 
 
 

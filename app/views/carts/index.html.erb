@@ -1,36 +1,45 @@
-<p id="notice"><%= notice %></p>
+<h1>Items in Your Cart</h1>  
 
-<h1>Your Cart</h1>
+<%if @cart.empty? %>
+  <p> Your Cart is Currently Empty </p>
+  <p><b><%= link_to "Shop for Items", items_path %> <b> </p>
+<% else %>
+  <%= link_to 'Clear Cart', cart_clear_path %> &nbsp;&nbsp;
+  <%= link_to 'ADD More Products', items_path %><br><br> 
+<% end %>
 
-<table>
+<% total = 0 %>
+ 
+<table> 
   <thead>
     <tr>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Item</th>
+      <th>Price</th> 
     </tr>
   </thead>
-
   <tbody>
-    <% @carts.each do |cart| %>
-      <tr>
-        <%if current_user%>
-          <%if cart.user == current_user %>
-            <td><%= cart.user.email %></td>
-            <td><%= link_to 'Show', cart %></td>
-            <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-            <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <%elsif current_user.email == "admin@admin.com" %>
-            <td><%= cart.user.email %></td>
-            <td><%= link_to 'Show', cart %></td>
-            <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-            <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <%end%>
-        <%end%>
-      </tr>
+    <% @cart.each do | id | %>
+    <% item = Item.find_by_id(id) %>
+    <tr>
+      <td><%= link_to item.name, item %></td>
+      <td><%= number_to_currency(item.price ) %></td> 
+        
+    </tr>
+      <% total = item.price %>
+
     <% end %>
-  </tbody>
-</table>
+  </tbody>   
+ </table>
+ <p><b> TOTAL: <%= number_to_currency(total)%> <b></p>
 
-<br>
+ <!-- This is teporarly to clear the cart, but it will be to
+ process and place a new order by customer -->
+<% if @cart.empty? %> 
+  <%  else %>  
+  <% @cart.each do | id | %>
+    <% item = Item.find_by_id(id) %>  
+      <%= link_to "Check Out", order_new_path(itemid: item.id, user_id: current_user.id)%>      
+    <% end %>    
+<% end %>
 
-<%= link_to 'New Cart', new_cart_path %>
+ 

@@ -13,10 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ #navigation{
+ 	background-color: #F1F1F1;
+ }
 #menu_nav{
 	padding: 0 15px 0 15px;
 	height: 30px;
 	font-size: 14pt;
+	 
 }
 #user_session{
 	float: right;

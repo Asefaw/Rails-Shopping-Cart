@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
+       <th>User ID</th>
       <th>User Name</th>
-      <th>Date Created</th> 
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,9 +13,13 @@
     <% @users.each do |user| %>
       <tr>
         <%if current_user %>
-          <%if current_user.email = "admin@admin.com" %>
+          <%if user.id == current_user.id%>
+            <td><%= current_user.id %></td>
+            <td><%= current_user.email %></td>
+           
+          <%elsif current_user.email == "admin@admin.com"%>
+            <td><%= user.id %></td>
             <td><%= user.email %></td>
-            <td><%= user.remember_created_at %></td>  
           <%end%>
         <%end%>
       </tr>

@@ -5,8 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Orderdate</th> 
+      <th>Order Id</th> 
+      <th>Order Date</th> 
       <th>User </th>
+      <th>Items Ordered </th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -16,17 +18,20 @@
       <tr>
         <%if current_user %>
           <%if order.user == current_user%>
+            <td><%= order.id %>&nbsp; &nbsp; </td> 
             <td><%= order.orderdate %>&nbsp; &nbsp; </td> 
-            <td><%= order.user.email%>&nbsp; </td> 
+            <td><%= order.user_id%>&nbsp; &nbsp; </td> 
+            <td><%= order.item_ordered%>&nbsp; &nbsp; </td> 
             <td><%= link_to 'Show', order %>&nbsp;</td>
             <td><%= link_to 'Edit', edit_order_path(order) %>&nbsp;</td>
             <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <%elsif current_user.email == "admin@admin.com"%>
-              <td><%= order.orderdate %>&nbsp; &nbsp; </td> 
-              <td><%= order.user.email%>&nbsp; </td> 
-              <td><%= link_to 'Show', order %>&nbsp;</td>
-              <td><%= link_to 'Edit', edit_order_path(order) %>&nbsp;</td>
-              <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= order.orderdate %>&nbsp; &nbsp; </td>  
+            <td><%= order.user_id%>&nbsp; &nbsp;  </td> 
+            <td><%= order.item_ordered%>&nbsp;&nbsp; </td>
+            <td><%= link_to 'Show', order %>&nbsp;&nbsp;</td>
+            <td><%= link_to 'Edit', edit_order_path(order) %>&nbsp;&nbsp;</td>
+            <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <%end%>
         <%end%>
       </tr>
@@ -36,4 +41,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<!--<%= link_to 'New Order', new_order_path %> -->

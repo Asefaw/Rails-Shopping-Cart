@@ -1,18 +1,65 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
 
   # GET /carts
   # GET /carts.json
-  def index
-    @carts = Cart.all
+  def checkout
+    #@carts.each do |c|
+      @order = Order.new
+      @order.item_ordered = params[:itemid]
+      @order.user_id = params[:user_id] 
+      @order.orderdate = Datetime.now
+      @order.save
+    #end
   end
 
+  
+  def index
+    if session[:cart] then
+      @cart = session[:cart]
+    else
+      @cart = {}
+    end
+  end
+#--------------------------------------------------------------
+  def add
+      item_id = params[:id]
+      if session[:cart] then
+        cart = session[:cart]
+      else
+        session[:cart] = {}
+        cart = session[:cart]
+      end
+ 
+
+  # check if item was already in the cart 
+  # if it is incerement the qunatity'
+  # otherwise quntitity is 1
+    if cart[item_id] then
+      cart[item_id] += 1
+    else
+      cart[item_id] = 1
+    end
+      redirect_to :action => :index   
+  end
+  #---------------------------------------------------------------------
+  #clear a cart
+  def emptyCart
+
+    session[:cart] = {}
+    redirect_to :action => :index
+  end
   # GET /carts/1
   # GET /carts/1.json
   def show
   end
 
+  def remove
+    #item_id = params[:item_id]
+    #@cart.item = nil
+    #redirect_to :action => :index
+  end
   # GET /carts/new
   # the user_id associated with cart is the current user_id
   def new
